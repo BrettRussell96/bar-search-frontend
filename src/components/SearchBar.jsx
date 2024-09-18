@@ -45,7 +45,15 @@ export default function SearchBar() {
                 />
                 <button type="submit">Search</button>
             </form>
-
+            {suggestions.length > 0 && (
+                <ul className="autocomplete-dropdown">
+                    {suggestions.map((suggestion, index) => (
+                        <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
+                            {suggestions.description}
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
     );
-}
+};
