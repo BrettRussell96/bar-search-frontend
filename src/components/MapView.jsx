@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { configDotenv } from "dotenv";
 import { GoogleMap, Marker, InfoWindow, LoadScript } from "@react-google-maps/api";
-configDotenv();
 
-const apiKey = process.env.API_KEY;
+const apiKey = import.meta.env.VITE_API_KEY;
 
-export default function MapView() {
+export default function MapView({ center, places }) {
     const [selectedPlace, setSelectedPlace] = useState(null);
 
     const mapContainerStyle = {
