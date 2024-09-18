@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-export default function SearchBar() {
+export default function SearchBar({ onSearch }) {
     const [input, setInput] = useState("");
     const [suggestions, setSuggestions] = useState([]);
 
-    // Function to handle form input and autocomplete
     const handleInputChange = async (event) => {
         const value = event.target.value;
         setInput(value);
 
-        // Fetch autocomplete suggestions from API
         if (value.length > 2) {
             try {
-                const response = await axios.get(`https://localhost:3001/map/autocomplete?input=${value}`);
+                const response = await axios.get(`http://localhost:3001/map/autocomplete?input=${value}`);
                 setSuggestions(response.data);
             } catch (error) {
                 console.error("Error fetching autocomplete suggestions:", error);
@@ -49,7 +47,7 @@ export default function SearchBar() {
                 <ul className="autocomplete-dropdown">
                     {suggestions.map((suggestion, index) => (
                         <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
-                            {suggestions.description}
+                            {suggestion.description}
                         </li>
                     ))}
                 </ul>
