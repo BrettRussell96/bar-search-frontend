@@ -10,8 +10,13 @@ export default function HomePage() {
     const handleSearch = async (location) => {
         try {
             const response = await axios.get(`http://localhost:3001/map?location=${location}`);
-            setCenter(response.data.center);
-            setPlaces(response.data.places);
+            const { center, places } = response.data
+
+            console.log("center:", center);
+            console.log("places", places);
+
+            setCenter(center);
+            setPlaces(places);
         } catch (error) {
             console.error("Error fetching places:", error);
         }
