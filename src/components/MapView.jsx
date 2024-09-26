@@ -78,7 +78,7 @@ export default function MapView({ center, places }) {
                 <VenueModal
                     place={selectedPlace}
                     isOpen={isModalOpen}
-                    onCLose={() => setIsModalOpen(false)} 
+                    onClose={() => setIsModalOpen(false)} 
                 />
             )}
         </div>
