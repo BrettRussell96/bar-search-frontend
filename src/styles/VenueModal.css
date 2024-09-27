@@ -1,33 +1,48 @@
-.pure-modal {
-    background-color: #2d235c !important;
-    color: #fff !important;
-    border-radius: 10px !important;
+.panel {
+    background-color: #2d235c;
+    border-radius: 10px;
 }
 
-.pure-modal .pure-modal-header {
-    background-color: #4e4376 !important;
-    color: #fff !important;
-    font-size: 1.2rem !important;
-    font-weight: bold !important;
-    text-align: center !important;
+.panel-body {
+    background-color: #2d235c;
 }
 
-.pure-modal .modal-content {
+.panel-body.scrollable {
+    background-color: #47457a;
+}
+
+.pure-modal .close {
+    background: #fad6a5;
+}
+
+.modal-wrapper {
+    background-color: #2d235c;
+    color: #1d1d1d;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.modal-header h2 {
+    background-color: #4e4376;
+    color: #d4b557;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 0 10px 0;
+    padding: 10px 0;
+    border-radius: 10px;
+}
+
+.modal-content {
     background-color: #1c1b3e;
-    color: #ffffff;
+    color: #fad6a5;
     padding: 20px;
     border-radius: 10px;
 }
 
-.pure-modal .modal-content h3 {
-    color: 8b68e0;
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
 .modal-content p {
-    color: #b3b3d1;
-    font-size: 1rem;
+    color: #fad6a5;
+    font-size: 0.9rem;
     margin-bottom: 10px;
 }
 
@@ -40,12 +55,12 @@
     text-decoration: underline;
 }
 
-.pure-modal .images {
+.images {
     display: flex;
     gap: 10px;
 }
 
-.pure-modal .images img {
+.images img {
     width: 100px;
     height: 100px;
     object-fit: cover;
@@ -53,15 +68,16 @@
     border: 2px solid #47457a;
 }
 
-.pure-modal .pure-modal-footer button {
+.modal-footer button {
     background-color: #8b68e0;
-    color: white;
+    color: #fad6a5;
     padding: 10px 20px;
-    border: none;
+    border: 1px solid transparent;
+    border-color: #2d2d2d;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.pure-modal .pure-modal-footer button:hover {
+.modal-footer button:hover {
     background-color: #6b5da0;
 }
