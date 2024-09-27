@@ -6,6 +6,7 @@ import "../styles/VenueModal.css";
 
 export default function VenueModal({ place, isOpen, onClose }) {
     const [selectedImage, setSelectedImage] = useState(null);
+
     return (
         <PureModal
             isOpen={isOpen}
@@ -30,6 +31,8 @@ export default function VenueModal({ place, isOpen, onClose }) {
                             Website
                         </a>
                     )}
+ 
+                    {console.log(place.images)}
                     {place.images && place.images.length > 0 && (
                         <div className="images">
                             {place.images.map((url, index) => (

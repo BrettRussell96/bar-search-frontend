@@ -58,14 +58,32 @@
 .images {
     display: flex;
     gap: 10px;
+    overflow-x: scroll;
+    padding: 10px;
 }
 
 .images img {
     width: 100px;
     height: 100px;
     object-fit: cover;
+    cursor: pointer;
     border-radius: 5px;
     border: 2px solid #47457a;
+    transition: transform 0.3s;
+}
+
+.images img:hover {
+    transform: scale(1.3);
+}
+
+.image-full-view img {
+    width: 100%;
+    height: auto;
+    max-width: 600px;
+    max-height: 400px;
+    object-fit: contain;
+    margin: auto;
+    display: block;
 }
 
 .modal-footer button {
