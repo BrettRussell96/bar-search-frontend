@@ -52,25 +52,13 @@ export default function MapView({ center, places }) {
                 <GoogleMap
                     mapContainerStyle={mapContainerStyle}
                     center={center}
-                    zoom={13}
+                    zoom={15}
                     options={{
                         disableDefaultUI: true,
                         mapId: mapId
                     }}
                     onLoad={handleMapLoad}
-                >
-                    {selectedPlace && (
-                        <InfoWindow
-                            position={selectedPlace.location}
-                            onCloseClick={() => setSelectedPlace(null)}
-                        >
-                            <div>
-                                <h3>{selectedPlace.name}</h3>
-                                <p>{selectedPlace.address}</p>
-                                <button onClick={() => setIsModalOpen(true)}>More Info</button>
-                            </div>
-                        </InfoWindow>
-                    )}
+                >                
                 </GoogleMap>
             </LoadScript>
 
@@ -78,7 +66,10 @@ export default function MapView({ center, places }) {
                 <VenueModal
                     place={selectedPlace}
                     isOpen={isModalOpen}
-                    onClose={() => setIsModalOpen(false)} 
+                    onClose={() => {
+                        setIsModalOpen(false);
+                        setSelectedPlace(null);
+                    }} 
                 />
             )}
         </div>
