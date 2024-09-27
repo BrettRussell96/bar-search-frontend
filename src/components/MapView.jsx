@@ -15,6 +15,7 @@ export default function MapView({ center, places }) {
         height: "700px"
     };
 
+
     useEffect(() => {
         if (map && window.google && window.google.maps.marker) {
             map.markers?.forEach(marker => marker.setMap(null));
@@ -23,10 +24,20 @@ export default function MapView({ center, places }) {
             places.forEach((place) => {
                 if (!place.location || !place.location.lat || !place.location.lng) return;
 
+                const customMarker = document.createElement('div');
+                customMarker.className = 'custom-marker';
+                customMarker.style.backgroundColor = '#8b68e0';
+                customMarker.style.width = '20px';
+                customMarker.style.height = '20px';
+                customMarker.style.border = '1px solid transparent';
+                customMarker.style.borderRadius = '50%';
+                customMarker.style.borderColor = '#1d1d1d';
+
                 const marker = new window.google.maps.marker.AdvancedMarkerElement({
                     map: map,
                     position: { lat: place.location.lat, lng: place.location.lng },
-                    title: place.name
+                    title: place.name,
+                    content: customMarker
                 });
 
                 marker.addListener('click', () => {
