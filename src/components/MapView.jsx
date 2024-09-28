@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { GoogleMap, LoadScript, InfoWindow } from "@react-google-maps/api";
 import VenueModal from "./VenueModal";
 
+
 const apiKey = import.meta.env.VITE_API_KEY;
 const mapId = import.meta.env.VITE_MAP_ID;
 
@@ -11,8 +12,13 @@ export default function MapView({ center, places }) {
     const [map, setMap] = useState(null);
 
     const mapContainerStyle = {
-        width: "200%",
-        height: "700px"
+        width: "99vw",
+        height: "80vh",
+        position: "absolute",
+        right: "0.5vw",
+        left:"0.5vw",
+        bottom: "1vh",
+        
     };
 
 
@@ -27,11 +33,13 @@ export default function MapView({ center, places }) {
                 const customMarker = document.createElement('div');
                 customMarker.className = 'custom-marker';
                 customMarker.style.backgroundColor = '#8b68e0';
-                customMarker.style.width = '20px';
-                customMarker.style.height = '20px';
+                customMarker.style.width = '1rem';
+                customMarker.style.height = '1rem';
                 customMarker.style.border = '1px solid transparent';
                 customMarker.style.borderRadius = '50%';
                 customMarker.style.borderColor = '#1d1d1d';
+                customMarker.style.boxShadow = '0px 0px 5px rgba(0, 0, 0, 0.5)';
+                
 
                 const marker = new window.google.maps.marker.AdvancedMarkerElement({
                     map: map,
