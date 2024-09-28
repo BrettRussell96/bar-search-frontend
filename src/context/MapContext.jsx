@@ -8,7 +8,7 @@ export const useMap = () => {
 };
 
 export const MapProvider = ({ children }) => {
-    const [clearInterval, setCenter] = useState(null);
+    const [center, setCenter] = useState(null);
     const [places, setPlaces] = useState([]);
 
     const handleSearch = async (location) => {
