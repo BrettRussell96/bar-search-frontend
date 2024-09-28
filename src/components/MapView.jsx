@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { GoogleMap, LoadScript, InfoWindow } from "@react-google-maps/api";
+import React, { useEffect, useState } from "react";
+import { GoogleMap, LoadScript } from "@react-google-maps/api";
 import VenueModal from "./VenueModal";
 
 
