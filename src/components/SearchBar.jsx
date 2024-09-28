@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useMap } from "../context/MapContext";
 import axios from "axios";
 
-export default function SearchBar({ onSearch }) {
+export default function SearchBar() {
     const [input, setInput] = useState("");
     const [suggestions, setSuggestions] = useState([]);
+    const { handleSearch } = useMap();
 
     const handleInputChange = async (event) => {
         const value = event.target.value;
@@ -24,12 +26,12 @@ export default function SearchBar({ onSearch }) {
     const handleSuggestionClick = (suggestion) => {
         setInput(suggestion.description);
         setSuggestions([]);
-        onSearch(suggestion.description);
+        handleSearch(suggestion.description);
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        onSearch(input);
+        handleSearch(input);
     };
 
     return (

@@ -30,5 +30,5 @@ export const MapProvider = ({ children }) => {
         <MapContext.Provider value={{ center, places, handleSearch }}>
             {children}
         </MapContext.Provider>
-    )
+    );
 }

@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
 import VenueModal from "./VenueModal";
+import { useMap } from "../context/MapContext";
 
 
 const apiKey = import.meta.env.VITE_API_KEY;
 const mapId = import.meta.env.VITE_MAP_ID;
 
-export default function MapView({ center, places }) {
+const libraries = ["marker"];
+
+export default function MapView() {
+    const { center, places } = useMap()
     const [selectedPlace, setSelectedPlace] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [map, setMap] = useState(null);
@@ -66,19 +70,23 @@ export default function MapView({ center, places }) {
         <div className="map-container">
             <LoadScript 
                 googleMapsApiKey={apiKey}
-                libraries={["marker"]}
+                libraries={libraries}
             >
-                <GoogleMap
-                    mapContainerStyle={mapContainerStyle}
-                    center={center}
-                    zoom={15}
-                    options={{
-                        disableDefaultUI: true,
-                        mapId: mapId
-                    }}
-                    onLoad={handleMapLoad}
-                >                
-                </GoogleMap>
+                {center && (
+                    <GoogleMap
+                        mapContainerStyle={mapContainerStyle}
+                        center={center}
+                        zoom={15}
+                        options={{
+                            disableDefaultUI: true,
+                            mapId: mapId
+                        }}
+                        onLoad={handleMapLoad}
+                    >                
+                    </GoogleMap>
+
+                )}
+                
             </LoadScript>
 
             {selectedPlace && (
