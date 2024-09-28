@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SearchBar from "../components/SearchBar";
 import MapView from "../components/MapView";
 import axios from "axios";
+// import "../styles/HomePage.css";
 
 export default function HomePage() {
     const [center, setCenter] = useState(null);
@@ -24,7 +25,9 @@ export default function HomePage() {
 
     return (
         <div className="home-page">
-            <SearchBar onSearch={handleSearch} />
+            <div className="search-bar-container">
+                <SearchBar onSearch={handleSearch} />
+            </div>
             {center && <MapView center={center} places={places} />}
         </div>
     );
