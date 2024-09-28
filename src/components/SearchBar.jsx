@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { useMap } from "../context/MapContext";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import "../styles/SearchBar.css";
 
-export default function SearchBar() {
+export default function SearchBar({ page }) {
     const [input, setInput] = useState("");
     const [suggestions, setSuggestions] = useState([]);
     const { handleSearch } = useMap();
+    const navigate = useNavigate();
 
     const handleInputChange = async (event) => {
         const value = event.target.value;
@@ -27,15 +30,17 @@ export default function SearchBar() {
         setInput(suggestion.description);
         setSuggestions([]);
         handleSearch(suggestion.description);
+        navigate("/mapview");
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
         handleSearch(input);
+        navigate("/mapview");
     };
 
     return (
-        <div className="search-bar">
+        <div className={`search-bar ${page === "home" ? "search-bar-home" : "search-bar-map"}`}>
             <form onSubmit={handleSubmit}>
                 <input 
                     type="text"

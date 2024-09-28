@@ -3,6 +3,7 @@ import { GoogleMap, LoadScript } from "@react-google-maps/api";
 import VenueModal from "./VenueModal";
 import { useMap } from "../context/MapContext";
 import SearchBar from "./SearchBar";
+import "../styles/MapView.css";
 
 
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -69,7 +70,7 @@ export default function MapView() {
 
      return (
         <div className="map-container">
-            <SearchBar />
+            <SearchBar page="map" />
             <LoadScript 
                 googleMapsApiKey={apiKey}
                 libraries={libraries}
