@@ -1,0 +1,11 @@
+@media screen and (max-width: 768px) {
+    .map-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .map-container h5 {
+        font-size: smaller;
+        margin-top: 0;
+    }
+}

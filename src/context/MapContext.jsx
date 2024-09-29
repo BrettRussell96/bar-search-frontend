@@ -10,6 +10,7 @@ export const useMap = () => {
 export const MapProvider = ({ children }) => {
     const [center, setCenter] = useState(null);
     const [places, setPlaces] = useState([]);
+    const [searchedLocation, setSearchedLocation] = useState("");
 
     const handleSearch = async (location) => {
         try {
@@ -21,13 +22,14 @@ export const MapProvider = ({ children }) => {
 
             setCenter(center);
             setPlaces(places);
+            setSearchedLocation(location);
         } catch (error) {
             console.error("Error fetching places:", error);
         }
     };
 
     return (
-        <MapContext.Provider value={{ center, places, handleSearch }}>
+        <MapContext.Provider value={{ center, places, searchedLocation, handleSearch }}>
             {children}
         </MapContext.Provider>
     );

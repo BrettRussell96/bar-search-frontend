@@ -12,7 +12,7 @@ const mapId = import.meta.env.VITE_MAP_ID;
 const libraries = ["marker"];
 
 export default function MapView() {
-    const { center, places } = useMap()
+    const { center, places, searchedLocation } = useMap()
     const [selectedPlace, setSelectedPlace] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [map, setMap] = useState(null);
@@ -24,10 +24,11 @@ export default function MapView() {
         if (screenWidth <= 768) {
             setMapContainerStyle({
                 width: "100vw",
-                height: "75vh",
+                height: "70vh",
                 position: "absolute",
                 left: "0",
-                bottom: "0"
+                bottom: "0",
+                marginTop: "1rem"
             });
         } else {
             setMapContainerStyle({
@@ -94,6 +95,7 @@ export default function MapView() {
      return (
         <div className="map-container">
             <SearchBar page="map" />
+            <h5>Showing results for {searchedLocation}</h5>
             <LoadScript 
                 googleMapsApiKey={apiKey}
                 libraries={libraries}
