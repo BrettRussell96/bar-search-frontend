@@ -16,17 +16,40 @@ export default function MapView() {
     const [selectedPlace, setSelectedPlace] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [map, setMap] = useState(null);
+    const [mapContainerStyle, setMapContainerStyle] = useState({});
 
-    const mapContainerStyle = {
-        width: "99vw",
-        height: "80vh",
-        position: "absolute",
-        right: "0.5vw",
-        left:"0.5vw",
-        bottom: "1vh",
-        
+    const updateMapContainerStyle = () => {
+        const screenWidth = window.innerWidth;
+
+        if (screenWidth <= 768) {
+            setMapContainerStyle({
+                width: "100vw",
+                height: "75vh",
+                position: "absolute",
+                left: "0",
+                bottom: "0"
+            });
+        } else {
+            setMapContainerStyle({
+                width: "99vw",
+                height: "80vh",
+                position: "absolute",
+                right: "0.5vw",
+                left:"0.5vw",
+                bottom: "1vh"
+            });
+        }
     };
 
+    useEffect(() => {
+        updateMapContainerStyle();
+
+        window.addEventListener("resize", updateMapContainerStyle);
+
+        return () => {
+            window.removeEventListener("resize", updateMapContainerStyle);
+        }
+    }, []);
 
     useEffect(() => {
         if (map && window.google && window.google.maps.marker) {
